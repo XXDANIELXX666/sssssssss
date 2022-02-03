@@ -25,8 +25,26 @@ namespace sssssssss
         {
             InitializeComponent();
             context = new SALONEntities();
+            ShowLetters();
+            
             ShowTable();
+            DataGridClientService.ItemsSource = context.Client.ToList();
+            DataGridClientService.ItemsSource = context.Service.ToList();
+            DataGridClientService.ItemsSource = context.ClientService.ToList();
+            if (CmbTablse.SelectedIndex == 0)
+            {
+                DataGridClientService.ItemsSource = context.Client.ToList();
+            }
+            if (CmbTablse.SelectedIndex == 1)
+            {
+                DataGridClientService.ItemsSource = context.Service.ToList();
+            }
 
+        }
+
+        private void ShowLetters()
+        {
+            
         }
 
         private void ShowTable()
@@ -47,7 +65,7 @@ namespace sssssssss
             var currentClientService = DataGridClientService.SelectedItem as ClientService;
             if (currentClientService == null)
             {
-                MessageBox.Show("Выберите строку!");
+                MessageBox.Show("");
                 return;
 
             }
@@ -61,6 +79,31 @@ namespace sssssssss
         }
 
         private void BtnEditData_Click(object sender, RoutedEventArgs e)
+        {
+            Button BtnEdit = sender as Button;
+            var currentRental = BtnEdit.DataContext as ClientService;
+            var EdiWindow = new BtnAddData(context, currentRental);
+            EdiWindow.ShowDialog();
+        }
+
+        private void BtnAddClient_Click(object sender, RoutedEventArgs e)
+        {
+            var RentalSelect = new MainWindowClient();
+            RentalSelect.ShowDialog();
+        }
+
+        private void CmbTablse_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void BtnClient_Click(object sender, RoutedEventArgs e)
+        {
+            var ClientSelect = new Client();
+            ClientSelect.ShowDialog();
+        }
+
+        private void BtnService_Click(object sender, RoutedEventArgs e)
         {
 
         }

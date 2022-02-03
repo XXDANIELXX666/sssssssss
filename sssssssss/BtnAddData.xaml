@@ -14,9 +14,9 @@
 
         <UniformGrid Columns="2">
             <TextBlock>Client</TextBlock>
-            <ComboBox x:Name="CmbClient" DisplayMemberPath="Client" SelectedItem="{Binding ID}"></ComboBox>
+            <ComboBox x:Name="CmbClient" DisplayMemberPath="FirstName" SelectedItem="{Binding Client}"></ComboBox>
             <TextBlock>Service</TextBlock>
-            <ComboBox x:Name="CmbService" DisplayMemberPath="Service" SelectedItem="{Binding Service.Title}"></ComboBox>
+            <ComboBox x:Name="CmbService" DisplayMemberPath="Title" SelectedItem="{Binding Service}"></ComboBox>
             <TextBlock>StartTime</TextBlock>
             <DatePicker SelectedDate="{Binding StartTime}"></DatePicker>
             <TextBlock>Comment</TextBlock>

@@ -15,13 +15,20 @@
         <StackPanel Orientation="Horizontal">
             <Button x:Name="BtnAddData" Content="Добавить" Click="BtnAddData_Click"/>
             <Button x:Name="BtnDeleteData" Content="Удалить" Click="BtnDeleteData_Click"/>
+            <Button x:Name="BtnAddClient" Content="Клиент" Click="BtnAddClient_Click"/>
 
+            <ComboBox x:Name="CmbTablse" Width="100" Height="40" Margin="40,0,0,0" SelectionChanged="CmbTablse_SelectionChanged">
+                <TextBlock>Client</TextBlock>
+                <TextBlock>Service</TextBlock>
+            </ComboBox>
+            <Button x:Name="BtnClient" Content="Client" Click="BtnClient_Click"  Width="60" Height="30" Margin="40,0,0,0"/>
+            <Button x:Name="BtnService" Content="Service" Click="BtnService_Click"  Width="60" Height="30" Margin="10,0,0,0"/>
         </StackPanel>
 
         <DataGrid Grid.Row="1" x:Name="DataGridClientService" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ClientID" Binding="{Binding Client.ID}"/>
-                <DataGridTextColumn Header="ServiceID" Binding="{Binding Service.ID}"/>
+                <DataGridTextColumn Header="Client" Binding="{Binding Client.FirstName}"/>
+                <DataGridTextColumn Header="Service" Binding="{Binding Service.Title}"/>
                 <DataGridTextColumn Header="StarTtime" Binding="{Binding StartTime}"/>
                 <DataGridTextColumn Header="Comment" Binding="{Binding Comment}"/>
                 <DataGridTemplateColumn Header="Редактировать">

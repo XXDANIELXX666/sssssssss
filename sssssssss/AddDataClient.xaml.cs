@@ -15,23 +15,20 @@ using System.Windows.Shapes;
 namespace sssssssss
 {
     /// <summary>
-    /// Логика взаимодействия для BtnAddData.xaml
+    /// Логика взаимодействия для AddDataClient.xaml
     /// </summary>
-    public partial class BtnAddData : Window
+    public partial class AddDataClient : Window
     {
         SALONEntities context;
-        public BtnAddData(SALONEntities context, ClientService newClientService)
+        public AddDataClient(SALONEntities context, Client newclient)
         {
             InitializeComponent();
+            Cmb.ItemsSource = context.Gender.ToList();
             this.context = context;
-            CmbClient.ItemsSource = context.Client.ToList();
-            CmbService.ItemsSource = context.Service.ToList();
-            this.DataContext = newClientService;
-
-
+            this.DataContext = newclient;
         }
 
-        private void BtnSaveData_Click(object sender, RoutedEventArgs e)
+        private void BtnSav_Click(object sender, RoutedEventArgs e)
         {
             context.SaveChanges();
             this.Close();
