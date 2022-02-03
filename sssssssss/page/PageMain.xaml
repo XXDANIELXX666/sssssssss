@@ -12,7 +12,7 @@
             <RowDefinition Height="60"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0">
-            <TextBlock FontSize="30">Логин (Телефон, Mail)</TextBlock>
+            <TextBlock FontSize="30">Логин (Телефон, Mai)</TextBlock>
             <TextBox x:Name="Login" Width="300" FontSize="30" Margin="0,10,0,0"></TextBox>
             <TextBlock FontSize="30">Пароль</TextBlock>
             <PasswordBox x:Name="Password" Width="300" FontSize="30" Margin="0,10,0,0"></PasswordBox>
