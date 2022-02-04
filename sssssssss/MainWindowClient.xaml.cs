@@ -20,11 +20,39 @@ namespace sssssssss
     public partial class MainWindowClient : Window
     {
         SALONEntities context;
+        string currentLetter = "";
         public MainWindowClient()
         {
             InitializeComponent();
             context = new SALONEntities();
             ShowTable();
+            if (TxtEmail.Text == null && TxtPhone.Text == null)
+                return;
+            List<Client> listClient = context.Client.ToList();
+            listClient = listClient.Where(x => x.Email.ToLower().Contains(TxtEmail.Text.ToLower())).ToList();
+            listClient = listClient.Where(x => x.Phone.ToLower().Contains(TxtPhone.Text.ToLower())).ToList();
+            if (currentLetter.Count() == 1)
+            {
+                listClient = listClient.Where(x => x.FirstName.Contains(currentLetter)).ToList();
+            }
+            DataGridClient.ItemsSource = listClient.OrderBy(x => x.FirstName).ToList();
+            ShowLetters();
+        }
+
+        private void ShowLetters()
+        {
+            for (char i = 'А'; i <= 'Я'; i++)
+            {
+                TextBlock letter = new TextBlock
+                {
+                    Text = i.ToString(),
+                    FontWeight = FontWeights.Bold,
+                    Foreground = Brushes.White,
+                    Margin = new Thickness(10, 1, 5, 1)
+                };
+                letter.MouseLeftButtonDown += TextBlock_MouseLeftButtonDown;
+                StackLetters.Children.Add(letter);
+            }
         }
 
         private void ShowTable()
@@ -65,6 +93,28 @@ namespace sssssssss
             var currentCar = BtnEdit.DataContext as Client;
             var EdiWindow = new AddDataClient(context, currentCar);
             EdiWindow.ShowDialog();
+        }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var label = (TextBlock)sender;
+            currentLetter = label.Text;
+            foreach (TextBlock letter in StackLetters.Children)
+            {
+                letter.Foreground = Brushes.White;
+            }
+            label.Foreground = Brushes.Gold;
+            ShowTable();
+        }
+
+        private void TxtEmail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TxtPhone_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

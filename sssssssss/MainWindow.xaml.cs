@@ -28,17 +28,7 @@ namespace sssssssss
             ShowLetters();
             
             ShowTable();
-            DataGridClientService.ItemsSource = context.Client.ToList();
-            DataGridClientService.ItemsSource = context.Service.ToList();
-            DataGridClientService.ItemsSource = context.ClientService.ToList();
-            if (CmbTablse.SelectedIndex == 0)
-            {
-                DataGridClientService.ItemsSource = context.Client.ToList();
-            }
-            if (CmbTablse.SelectedIndex == 1)
-            {
-                DataGridClientService.ItemsSource = context.Service.ToList();
-            }
+            
 
         }
 

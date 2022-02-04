@@ -8,16 +8,34 @@
         Title="MainWindowClient" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal">
+        <StackPanel x:Name="StackLetters" Orientation="Horizontal" Background="{StaticResource ColorMain}" HorizontalAlignment="Right">
+            <TextBlock FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="10" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" ></TextBlock>
+        </StackPanel>
+
+
+        <StackPanel x:Name="StackLette" Orientation="Vertical" Background="{StaticResource ColorMain}" HorizontalAlignment="Right" Width="47">
+
             <Button x:Name="BtnAd" Content="Добавить" Click="BtnAd_Click"/>
             <Button x:Name="BtnD" Content="Удалить" Click="BtnD_Click"/>
-            <TextBlock Width="66" >FiersName</TextBlock>
+
            
         </StackPanel>
+        <StackPanel Orientation="Horizontal" Background="{StaticResource ColorMain}" Grid.Row="1">
+            
+            <TextBlock>Email</TextBlock>
+            <TextBox x:Name="TxtEmail" TextChanged="TxtEmail_TextChanged"></TextBox>
+            <TextBlock>Телефон</TextBlock>
+            <TextBox x:Name="TxtPhone" TextChanged="TxtPhone_TextChanged"></TextBox>
+            <TextBlock>Дата последнего посещения</TextBlock>
+            <DatePicker x:Name="DatePicRegistrationDate"></DatePicker>
+        </StackPanel>
+        
 
         <DataGrid Grid.Row="2" x:Name="DataGridClient" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
